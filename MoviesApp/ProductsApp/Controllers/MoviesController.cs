@@ -12,8 +12,8 @@ namespace ProductsApp.Controllers
         public Movie[] movies = new Movie[] 
         { 
             new Movie { Id = 1, Name = "Suspiria", Review = 5, Note = "A great horror movie. The soundtrack is epic!" }, 
-            new Movie { Id = 2, Name = "Halloween", Review = 4, Note = "A great good movie. I wish Carpented still made these."}, 
-            new Movie { Id = 3, Name = "Sharknado II", Review = 1, Note = "This is just terrible horror movie. Where did those sharks even come from?" },
+            new Movie { Id = 2, Name = "Halloween", Review = 4, Note = "A really good movie. I wish Carpented still made these."}, 
+            new Movie { Id = 3, Name = "Sharknado II", Review = 1, Note = "This is just a terrible horror movie. Where did those sharks even come from?" },
             new Movie { Id = 4, Name = "Shining", Review = 3, Note = "This is a good movie. Just a little bit overrated maybe." } 
         };
 
