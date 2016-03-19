@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Movie App</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <div>
+        <h1> Movie reviews and notes</h1><hr />
+        <h2>All Movies</h2> 
+        <ul id="movies" />
+    </div><hr />
+    <div>
+        <h2>Search movie info by ID</h2>
+        <input type="text" id="movieId" size="5" />
+        <input type="button" value="Search" onclick="find();" />
+        <p id="movie" />
+    </div>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script>
+    var uri = 'api/movies';
+
+    $(document).ready(function () {
+      $.getJSON(uri)
+          .done(function (data) {
+            $.each(data, function (key, item) {
+              $('<li>', { text: itemName(item) }).appendTo($('#movies'));
+            });
+          });
+    });
+
+    function itemName(item) {
+      return item.Id +". "+ item.Name;
+    }
+
+    function allItemInfo(item) {
+            return item.Name + ": " + item.Review + "/5 stars. " + item.Note;
+    }
+
+    function find() {
+        var id = $('#movieId').val();
+        if (id != "") {
+            $.getJSON(uri + '/' + id)
+                .done(function (data) {
+                    $('#movie').text(allItemInfo(data));
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#movie').text('Error: ' + err);
+                });
+        }
+    }
+    </script>
+</body>
+</html>
